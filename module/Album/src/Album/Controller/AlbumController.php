@@ -28,15 +28,14 @@ class AlbumController extends AbstractActionController
 
     /**
      * Action 'index' /album
-     * @pending Affiche la liste des albums de l'application
+     * Charge la liste des albums de l'application et la passe au script de vue
      * 
      * @return array
      */
     public function indexAction() {
-        $at = $this->getAlbumTable();
-        return array(
-            'at' => print_r($at, true),
-        );
+        return new ViewModel(array(
+            'albums' => $this->getAlbumTable()->fetchAll(),
+        ));
     }
 
     public function addAction() {
